@@ -2,7 +2,7 @@
   Button
  
  Turns on and off a light emitting diode(LED) connected to digital  
- pin 13, when pressing a pushbutton attached to pin 2. 
+ pin 9, when pressing a pushbutton attached to pin 2. 
  
  
  The circuit:
@@ -25,14 +25,14 @@
 
 // constants won't change. They're used here to 
 // set pin numbers:
-const int buttonPin = 2;     // the number of the pushbutton pin
-const int ledPin =  9;      // the number of the LED pin
+int buttonPin = 2;     // the number of the pushbutton pin
+int ledPin =  9;      // the number of the LED pin
 
 // variables will change:
 int buttonState = 0;         // variable for reading the pushbutton status
 
-int delayAmount=30;
-int fadeAmount=5;
+int delayAmount=30; // the amount of delay between each fading step
+int fadeAmount=5; // fading speed (size of the fading step)
 
 void setup() {
   // initialize the LED pin as an output:
@@ -62,10 +62,11 @@ void loop(){
     analogWrite(ledPin, fadeValue);         
     // wait for delayAmount milliseconds to see the dimming effect    
     delay(delayAmount);                            
+  }
   } 
   else {
     // turn LED off:
     analogWrite(ledPin, 0); 
-    fadeValue = 0;
+
   }
 }
